@@ -1,0 +1,68 @@
+{
+    "name": "life-todo",
+    "displayName": "life-todo",
+    "description": "todo management",
+    "version": "0.0.2",
+    "publisher": "life-todo",
+    "engines": {
+        "vscode": "^1.18.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:extension.LifeTodoStart",
+        "onCommand:extension.LifeTodoStop",
+        "onCommand:extension.LifeTodoList",
+        "*"
+    ],
+    "main": "./extension",
+    "contributes": {
+        "commands": [{
+                "command": "extension.LifeTodoStart",
+                "title": "life todo start"
+            },
+            {
+                "command": "extension.LifeTodoStop",
+                "title": "life todo stop"
+            },
+            {
+                "command": "extension.LifeTodoList",
+                "title": "life todo list"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "life-todo configuration",
+            "properties": {
+                "life-todo.lifeFilePath": {
+                    "type": "string",
+                    "default": "c:\\Users\\kingd\\life-todo.md",
+                    "description": "配置life文件的位置"
+                },
+                "life-todo.todoKeyWords": {
+                    "type": "string",
+                    "default": "TODO: ",
+                    "description": "匹配关键词,正则表达式"
+                },
+                "life-todo.todoTemplate": {
+                    "type": "string",
+                    "default": "# {content}\r - {todoID}\r + {time}",
+                    "description": "生成记录的模板"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.6",
+        "eslint": "^4.6.1",
+        "@types/node": "^7.0.43",
+        "@types/mocha": "^2.2.42"
+    },
+    "dependencies": {}
+}
